@@ -18,6 +18,7 @@ mongoose.connect(process.env.DB_URL,
  },()=>console.log(`CONNECTED TO DB, COLLECTION~ ${process.env.COLLECTION}`));
 
 // MIDDLEWARES
+app.set("view engine", "ejs"); //For testing only.
 app.use(bodyParser.json()); //To handle json responses.
 app.use(cors()); //for Cross Origin req-res
 
@@ -27,25 +28,22 @@ app.use('/api', noteRoutes);
 
 // Redirects and Home
 app.get('/', (req,res)=>{
-    const Home = {
-        xyz : 'Keep Note API v1.0.1',
-        Message : 'A Fully functional Node API for Notes app',
-        Author : 'Akash Chouhan',
-        Github : 'github.com/akashchouhan16',
-        ISO : Date.now()
-    };
-    res.status(200).json(Home);
+    // res.status(200).json(Home);
+    res.render('Home');
 });
+
 app.get('/:anyId', (req,res)=>{
-    res.redirect('/');
+    res.render('error');
 })
+
 // ******** Explicitly Defined Broken ROUTES *******
 app.post('/', (req,res)=>{
-    res.status(400).json({
+    const Log = {
         LOG : 'POST ROUTE Not Found [Invalid Request]',
         STATUS : 400,
         Message : 'Please Visit localhost:5000/ For more info'
-    })
+    };
+    res.status(400).json(Log);
 })
 app.post('/:anyId', (req,res)=>{
     res.status(400).json({
