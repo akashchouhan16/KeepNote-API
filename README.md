@@ -34,11 +34,9 @@
 
 ---
 
-<!-- ![Alt Text](main.gif) -->
-<center>
-<h2 style="float:left;">Preview</h2> 
-<img src="main.gif" width="472" height="247"/>
-</center>
+## Preview
+
+![Alt Text](main.gif)
 
 ---
 
