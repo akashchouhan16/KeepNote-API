@@ -1,4 +1,4 @@
-# KeepNote REST API
+# KeepNotes REST API
 
 A backend for a web application which stores notes. This **CRUD API** is built using [Node](https://nodejs.org/en/) and [Express](https://expressjs.com/) and fetches data from [MongoDB](https://www.mongodb.com/).
 
