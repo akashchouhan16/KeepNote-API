@@ -1,11 +1,15 @@
 {
-  "name": "notekeeper_api",
+  "name": "keepnotes_api",
   "version": "1.0.1",
   "description": "A Note keeping API using Node and Mongodb.",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akashchouhan16/KeepNotes_API"
   },
   "keywords": [
     "Nodejs",
@@ -15,6 +19,10 @@
   ],
   "author": "akashchouhan16",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/akashchouhan16/KeepNotes_API/issues"
+  },
+  "homepage": "https://github.com/akashchouhan16/KeepNotes_API/blob/main/README.md",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
