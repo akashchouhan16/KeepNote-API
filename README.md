@@ -1,6 +1,6 @@
 # KeepNotes REST API
 
-A backend for a web application which stores notes. This **CRUD API** is built using [Node](https://nodejs.org/en/) and [Express](https://expressjs.com/) and fetches data from [MongoDB](https://www.mongodb.com/).
+**API** for web applications which stores notes. This **CRUD API** is built using [Node](https://nodejs.org/en/) and [Express](https://expressjs.com/) and fetches data from [MongoDB](https://www.mongodb.com/).
 
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/Naereen/ama)
@@ -9,7 +9,7 @@ A backend for a web application which stores notes. This **CRUD API** is built u
 
 ---
 
-## How it works ?
+## Installation
 
 - **Install All Dependencies**
   ```sh-session
@@ -33,13 +33,21 @@ A backend for a web application which stores notes. This **CRUD API** is built u
 
 ---
 
+<!-- ![Alt Text](main.gif) -->
+<center>
+<h2 style="float:left;">Preview</h2> 
+<img src="main.gif" width="472" height="247"/>
+</center>
+
+---
+
 ## Routes
 
-- > Home : `localhost:5000/`
-- > View all the notes `localhost:5000/api/`
-- > Add new note `localhost:5000/api/newnote`
-- > Update a note `locahost:5000/api/notes/:noteId`
-- > Delete a note `localhost:5000/api/notes/:noteId`
+- > **Home : `localhost:5000/`**
+- > **View all the notes `localhost:5000/api/`**
+- > **Add new note `localhost:5000/api/newnote`**
+- > **Update a note `locahost:5000/api/notes/:noteId`**
+- > **Delete a note `localhost:5000/api/notes/:noteId`**
 
 ---
 

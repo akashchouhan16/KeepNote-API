@@ -87,7 +87,7 @@ app.listen(PORT, ()=>{
     const logs = {
         PORT : PORT,
         MSG : 'Server is up and running',
-        URL : 'https://localhost:5000/'
+        URL : `https://localhost:${PORT}/`
     };
     console.table(logs);
 })
