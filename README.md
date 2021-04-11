@@ -5,7 +5,7 @@
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/Naereen/ama)
 [![made-for-VSCode](https://img.shields.io/badge/Made%20for-VSCode-1f425f.svg)](https://code.visualstudio.com/)
-[![GitHub issues](https://img.shields.io/github/issues/saswatamcode/mern-quick-notes-api.svg)](https://GitHub.com/saswatamcode/mern-quick-notes-api/issues/)
+[![GitHub issues](https://img.shields.io/github/issues/akashchouhan16/KeepNotes_API.svg)](https://GitHub.com/saswatamcode/mern-quick-notes-api/issues/)
 
 ---
 
