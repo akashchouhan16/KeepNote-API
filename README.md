@@ -50,9 +50,17 @@
 
 ---
 
-## License
+## [Application Info](https://github.com/akashchouhan16/KeepNotes_API "View API")
 
-Copyright (c) **Akash Chouhan**. All rights reserved. Licensed under the **MIT** License.
+### Version
+
+**[1.0.0](https://github.com/akashchouhan16/KeepNotes_API "API Version")**
+
+### License
+
+**[MIT](https://github.com/akashchouhan16/KeepNotes_API/blob/main/LICENSE "API LICENSE")**
+
+> All rights reserved. Copyright (c) **Akash Chouhan**.
 
 [![forthebadge](https://forthebadge.com/images/badges/powered-by-black-magic.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
