@@ -54,7 +54,7 @@
 
 ### Version
 
-**[1.0.0](https://github.com/akashchouhan16/KeepNotes_API "API Version")**
+**[1.0.1](https://github.com/akashchouhan16/KeepNotes_API "API Version")**
 
 ### License
 
