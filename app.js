@@ -5,6 +5,7 @@ require('dotenv').config();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+const AppError = require('./AppError');
 
 // PORT
 const PORT = process.env.PORT || 5000;
@@ -27,13 +28,31 @@ const noteRoutes = require('./routes/notes');
 app.use('/api', noteRoutes);
 
 // Redirects and Home
+
 app.get('/', (req,res)=>{
-    // res.status(200).json(Home);
     res.render('Home');
 });
-
+// test error
 app.get('/:anyId', (req,res)=>{
-    res.render('error');
+   var error = {
+        status: 403,
+        message : 'Invalid api endpoint request made.' 
+    }
+    res.render('error', {error});
+})
+app.get('/notes', (req,res)=>{
+    var error = {
+        status:403,
+        message:'Invalid api endpoint request made.'
+    }
+    res.render('error', {error})
+})
+app.get('/notes/:anyId', (req,res)=>{
+    var error = {
+        status:403,
+        message:'Invalid api endpoint request made.'
+    }
+    res.render('error', {error})
 })
 
 // ******** Explicitly Defined Broken ROUTES *******
