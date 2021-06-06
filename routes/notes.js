@@ -15,16 +15,16 @@ router.get('/', async(req,res)=>{
 })
 
 //Add new Note / reminder / Task
-router.post('/newnote', (req,res)=>{
+router.post('/newnote', async (req,res)=>{
     const noteTitle = req.body.title;
     const noteBody = req.body.description;
-    console.log(noteTitle + "      "+ noteBody);
+    console.log(`Saving to DataBase.... TITLE : ${noteTitle} + "      "+ BODY : ${noteBody}`);
 
     const note = new Note({
         title : noteTitle,
         description : noteBody
     })
-    note.save()
+    await note.save()
     .then(noteData =>{
         res.json(data);
     })
@@ -62,7 +62,7 @@ router.patch('/notes/:noteId', async(req,res)=>{
 
 router.delete('/notes/:noteId', async(req,res)=>{
     try{
-        const deletedNote = await Note.remove({_id : req.params.noteId})
+        const deletedNote = await Note.deleteOne({_id : req.params.noteId})
         const Deletelog = {
             LOG : 'Note Deleted!',
             NOTE : deletedNote
