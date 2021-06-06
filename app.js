@@ -21,7 +21,9 @@ mongoose.connect(process.env.DB_URL,
 // MIDDLEWARES
 app.set("view engine", "ejs"); //For testing only.
 app.use(bodyParser.json()); //To handle json responses.
-app.use(cors()); //for Cross Origin req-res
+app.use(cors({
+    origin : `127.0.0.${PORT}` || `localhost://${PORT}`
+})); //for Cross Origin req-res
 
 //ROUTES
 const noteRoutes = require('./routes/notes');
@@ -100,7 +102,10 @@ app.patch('/:anyId', (req,res)=>{
         Message : 'Please Visit localhost:5000/ For more info'
     })
 })
-
+app.use((err,req,res,next)=>{
+    console.log(`Something went wrong, Restart the server. :)`);
+    next();
+})
 
 app.listen(PORT, ()=>{
     const logs = {
