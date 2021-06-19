@@ -12,16 +12,22 @@
 ## Installation
 
 - **Install All Dependencies**
-  ```sh-session
-      npm install --save
-      OR
-      npm i --save
+  ```
+    npm install
+  ```
+  > <strong><center> OR </center></strong>
+  ```
+    npm i --save
   ```
 - **Create a `.env` file and add local or cloud (ATLAS) DataBase Connection URI**
 
-  ```sh-session
+  ```
      DB_URL='mongodb://localhost:27017/<collectionName>'
+     DB_URL='mongodb+srv://username:password@cluster0.c1tnc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+  ```
 
+* **Add Collection `env` for MongoDB connection.**
+  ```
      COLLECTION='<collectionName>'
   ```
 
@@ -31,6 +37,19 @@
   ```
 
 * **Visit `http://localhost:5000/`**
+
+---
+
+## To access in a Docker container :
+
+1. Build a Docker container :
+   - ```
+       docker build -t keepnotes-api .
+     ```
+2. Run the docker container in either mode `[interative with -it flag / detached with -d flag]`
+   - ```
+     docker run -it -p 5000:5000 keepnotes-api
+     ```
 
 ---
 
