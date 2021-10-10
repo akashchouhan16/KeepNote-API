@@ -20,17 +20,17 @@ mongoose.connect(process.env.DB_URL,
 
 // MIDDLEWARES
 app.set("view engine", "ejs"); //For testing only.
-app.use(bodyParser.json()); //To handle json responses.
+app.use(bodyParser.json());
 app.use(cors({
     origin : `127.0.0.${PORT}` || `localhost://${PORT}`
-})); //for Cross Origin req-res
+}));
 
 //ROUTES
 const noteRoutes = require('./routes/notes');
 app.use('/api', noteRoutes);
 
-// Redirects and Home
 
+// Redirects and Home
 app.get('/', (req,res)=>{
     res.render('Home');
 });
@@ -88,13 +88,6 @@ app.delete('/:anyId', (req,res)=>{
     })
 })
 
-app.patch('/', (req,res)=>{
-    res.status(400).json({
-        LOG : 'PATCH ROUTE Not Found [Invalid Request]',
-        STATUS : 400,
-        Message : 'Please Visit localhost:5000/ For more info'
-    })
-})
 app.patch('/:anyId', (req,res)=>{
     res.status(400).json({
         LOG : 'PATCH ROUTE Not Found [Invalid Request]',
@@ -102,8 +95,17 @@ app.patch('/:anyId', (req,res)=>{
         Message : 'Please Visit localhost:5000/ For more info'
     })
 })
+app.patch('/', (req,res)=>{
+    res.status(400).json({
+        LOG : 'PATCH ROUTE Not Found [Invalid Request]',
+        STATUS : 400,
+        Message : 'Please Visit localhost:5000/ For more info'
+    })
+})
+
 app.use((err,req,res,next)=>{
     console.log(`Something went wrong, Restart the server. :)`);
+    console.error(err);
     next();
 })
 
@@ -111,7 +113,7 @@ app.listen(PORT, ()=>{
     const logs = {
         PORT : PORT,
         MSG : 'Server is up and running',
-        URL : `https://localhost:${PORT}/`
+        URL : `http://localhost:${PORT}/`
     };
     console.table(logs);
 })
