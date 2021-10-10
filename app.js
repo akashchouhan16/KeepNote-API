@@ -25,6 +25,7 @@ app.use(cors({
     origin : `127.0.0.${PORT}` || `localhost://${PORT}`
 }));
 
+
 //ROUTES
 const noteRoutes = require('./routes/notes');
 app.use('/api', noteRoutes);
@@ -103,9 +104,11 @@ app.patch('/', (req,res)=>{
     })
 })
 
+
 app.use((err,req,res,next)=>{
     console.log(`Something went wrong, Restart the server. :)`);
     console.error(err);
+
     next();
 })
 
