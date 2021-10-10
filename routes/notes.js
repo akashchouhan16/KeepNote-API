@@ -3,16 +3,90 @@ const router = express.Router();
 
 //Importing Model.
 const Note = require('../model/notes.model');
+let tempModel;
+(async function loadDB(){
+    try{
+        tempModel = await Note.find();
+        console.log(`[*] Model saved : ${tempModel.length} data points.\n`);
+    }catch(e){
+        console.error(`[*]Could not load all notes to temporary Model.\n`);
+    }
+})();
+
 
 // Home 
-router.get('/', async(req,res)=>{
+router.get('/',async(req,res)=>{
     try{
-        const notes = await Note.find();
-        res.json(notes); //Send back all the Notes saved in the DB.
+        const maxLimit = 5;
+        const page = parseInt(req.query.page);
+        let limit = parseInt(req.query.limit);
+        
+        if(page>0 && limit>0){
+            // Server limit check.
+        limit = (limit>maxLimit)? maxLimit : limit;
+
+        const startIdx = (page-1)*limit;
+        const endIdx = page*limit;
+
+        const paginatedResponse = {};
+        if(startIdx>0){
+            paginatedResponse.previous = {
+                page : page-1,
+                limit : limit
+            }
+        }
+        if(endIdx<tempModel.length){
+            paginatedResponse.next= {
+                page : page+1,
+                limit : limit
+            }
+        }
+        paginatedResponse.results  = tempModel.slice(startIdx,endIdx);
+        res.json(paginatedResponse);
+        }
+        else{
+            res.json(tempModel);//Send back all the Notes saved in the DB.
+        }
+        // const notes = await Note.find();
+        // console.log(tempModel);
+        // res.json(tempModel); 
+    
     }catch(error){
         res.status(500).json({LOG : 'Request Failed', message : error});
     }
 })
+function paginateData(model){
+    return (req,res,next)=>{
+     const maxLimit = 5;
+     const page = parseInt(req.query.page);
+     let limit = parseInt(req.query.limit);
+     if(page>0 && limit>0){
+
+     }
+     // Server limit check.
+     limit = (limit>maxLimit)? maxLimit : limit;
+
+        const startIdx = (page-1)*limit;
+        const endIdx = page*limit;
+
+        const paginatedResponse = {};
+        if(startIdx>0){
+            paginatedResponse.previous = {
+                page : page-1,
+                limit : limit
+            }
+        }
+        if(endIdx<model.length){
+            paginatedResponse.next= {
+                page : page+1,
+                limit : limit
+            }
+        }
+        paginatedResponse.results  = model.slice(startIdx,endIdx);
+        res.paginatedResults = paginatedResponse;
+        next();
+    }
+}
 
 //Add new Note / reminder / Task
 router.post('/newnote', async (req,res)=>{

@@ -7,23 +7,27 @@ mongoose.connect(process.env.DB_URL,
      useNewUrlParser: true,
      useCreateIndex: true,
     useUnifiedTopology: true
- },()=>console.log(`SEED CONNECTED TO DB, COLLECTION~ ${process.env.COLLECTION}`));
+ },()=>console.log(`[*] SEED CONNECTED TO DB, COLLECTION~ ${process.env.COLLECTION}`));
 
-
+ 
 const seedData = async ()=>{
     await note.deleteMany({});
+    let status = true;
     // Add Seed Data acc to the notes model.
-    for(let i=0;i<10;i++){
+    for(let i=0;i<200;i++){
         let n1 = new note({
-            title : `Note for the Day #${i+1}`,
+            
+            title : `Note #${i+1}`,
             description : `Sample description #${i+1}: Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit vel nulla nobis repellendus eos sit ex officia fugit laborum! Atque magnam voluptate a hic repudiandae eum soluta facere sint libero.`,
-            date : Date.now()
+            date : Date.now(),
+            status : (status)
         });
+        status = !status;
         await n1.save();
     }
 }
 
 seedData().then(() => {
     mongoose.connection.close();
-    console.log("DB Connection closed for SEED.");
+    console.log("[*] DB Connection closed for SEED");
 })

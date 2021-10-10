@@ -1,0 +1,11 @@
+# Testing the api end points : 
+
+#GET To Home 
+GET http://localhost:5000/
+
+#GET To api data
+
+GET http://localhost:5000/api
+
+#Simlary PUT, DELETE, POST request can be handled by the api's end points, as mentioned in the documents.
+
