@@ -90,21 +90,27 @@ function paginateData(model){
 
 //Add new Note / reminder / Task
 router.post('/newnote', async (req,res)=>{
-    const noteTitle = req.body.title;
-    const noteBody = req.body.description;
-    console.log(`Saving to DataBase.... TITLE : ${noteTitle} + "      "+ BODY : ${noteBody}`);
+    try{
+        const noteTitle = req.body.title || req.params.title ||"Note with no Title";
+        const noteBody = req.body.description || req.params.description ||"Note with no Description";
+        const status = req.body.status || false;
+        console.log(`Saving to DataBase.... TITLE : ${noteTitle} + "      "+ BODY : ${noteBody}`);
 
-    const note = new Note({
-        title : noteTitle,
-        description : noteBody
+        const note = new Note({
+            title : noteTitle,
+            description : noteBody,
+            status : status
     })
-    await note.save()
-    .then(noteData =>{
-        res.json(data);
-    })
-    .catch(err=>{
-        res.status(404).json({message : err , LOG : 'Unable to save the Note to DB'});
-    })
+    await note.save();
+    // .then(noteData =>{
+    //     res.json(data);
+    // })
+    // .catch(err=>{
+    //     res.status(404).json({message : err , LOG : 'Unable to save the Note to DB'});
+    // })
+    }catch(error){
+        res.status(404).json({message : error.message , LOG : 'Unable to save the Note to DB'});
+    }   
 });
 
 // Get on Specific Note : 
